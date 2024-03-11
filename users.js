@@ -19,9 +19,9 @@ let usersArr = [
     },
     {
         userID: '',
-        userName: "Ania",
-        userCity: "Żywiec",
-        userAge: 36
+        userName: "Magda",
+        userCity: "Bytom",
+        userAge: 57
     },
     {
         userID: '',

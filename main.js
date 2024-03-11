@@ -1,6 +1,8 @@
 const lista = document.querySelector('#lista');
 const addBtn = document.querySelector('#add');
-
+const findBtn = document.querySelector('#find');
+const criteria = document.querySelector('#criteria');
+const deleteButtons = document.querySelector('delete-button');
 
 usersArr.forEach((user) =>{
     let li = document.createElement('li');
@@ -35,7 +37,6 @@ function updateUsersList() {
 
         let span = document.createElement('span')
         span.innerHTML = `<strong>${user.userName}</strong> lat <strong>${user.userAge}</strong> z miasta <strong>${user.userCity}</strong>`;
-
         let button = document.createElement('button');
 
         button.classList.add('btn');
@@ -43,8 +44,15 @@ function updateUsersList() {
         button.classList.add('delete-button')
         button.textContent = 'X'
 
+        li.style.display = `flex`
+        li.style.justifyContent = `space-between`
         li.append(span);
         li.append(button);
         lista.append(li);
     });
 }
+
+deleteButtons.addEventListener('click', (evt) => {
+evt.preventDefault();
+console.log('kocham fortnite')
+})
