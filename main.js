@@ -109,3 +109,18 @@ function criteriaSelect(usersArr) {
 }
 
 criteriaSelect(usersArr);
+
+
+function filteredList(arr = usersArr){
+    const findVal = criteria.value;
+    const findText = findValueInput.value.trim().toLowerCase();
+    const filteredUsers = arr.filter(user => {
+        const value = user[findVal];
+        if (typeof value === 'string') {
+            return value.toLowerCase().includes(findText);
+        } else {
+            return false; // Nie filtruj, jeśli nie jest to string
+        }
+    });
+    updateFilteredList(filteredUsers);
+}
