@@ -94,3 +94,18 @@ findBtn.addEventListener('click', (evt) =>{
     evt.preventDefault();
     filteredList();
 });
+
+
+
+
+function criteriaSelect(usersArr) {
+    criteria.innerHTML = '';
+    for (let key in usersArr[0]) {
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = key;
+        criteria.appendChild(option);
+    }
+}
+
+criteriaSelect(usersArr);
