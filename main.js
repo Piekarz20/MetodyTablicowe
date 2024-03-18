@@ -2,7 +2,6 @@ const lista = document.querySelector('#lista');
 const addBtn = document.querySelector('#add');
 const findBtn = document.querySelector('#find');
 const criteria = document.querySelector('#criteria');
-const findValueInput = document.querySelector('#findValue');
 const filterList = document.querySelector('#filterList');
 
 updateUsersList();
@@ -55,22 +54,34 @@ function removeUser(removeByID){
     updateUsersList();
 };
 
-function criteriaSelect(keys) {
+function criteriaSelect(usersArr) {
     criteria.innerHTML = '';
-    keys.forEach(key => {
+    for (let key in usersArr[0]) {
         const option = document.createElement('option');
         option.value = key;
         option.textContent = key;
         criteria.appendChild(option);
-    });
+    }
 }
 
+
 function filteredList(arr = usersArr){
+    const findValueInput = document.querySelector('#findValue');
     const findVal = criteria.value;
     const findText = findValueInput.value.trim().toLowerCase();
-    const filteredUsers = arr.filter(user => user[findVal].toLowerCase().includes(findText));
+
+    const filteredUsers = arr.filter(user => {
+        console.log(findText);
+        if(typeof findText ==='string' && user[findVal] == findText){
+           filteredUsers.push(user[findVal])
+        } else {
+
+        }
+    });
+    console.log(filteredUsers)
     updateFilteredList(filteredUsers);
 }
+
 
 function updateFilteredList(arr) {
     filterList.innerHTML = '';
@@ -88,39 +99,10 @@ function updateFilteredList(arr) {
     });
 }
 
-criteriaSelect(Object.keys(usersArr[0]));
+criteriaSelect(usersArr);
 
 findBtn.addEventListener('click', (evt) =>{
     evt.preventDefault();
     filteredList();
 });
 
-
-
-
-function criteriaSelect(usersArr) {
-    criteria.innerHTML = '';
-    for (let key in usersArr[0]) {
-        const option = document.createElement('option');
-        option.value = key;
-        option.textContent = key;
-        criteria.appendChild(option);
-    }
-}
-
-criteriaSelect(usersArr);
-
-
-function filteredList(arr = usersArr){
-    const findVal = criteria.value;
-    const findText = findValueInput.value.trim().toLowerCase();
-    const filteredUsers = arr.filter(user => {
-        const value = user[findVal];
-        if (typeof value === 'string') {
-            return value.toLowerCase().includes(findText);
-        } else {
-            return false; // Nie filtruj, jeśli nie jest to string
-        }
-    });
-    updateFilteredList(filteredUsers);
-}
