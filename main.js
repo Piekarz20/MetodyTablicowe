@@ -69,3 +69,11 @@ function filteredList(arr = usersArr){
         lista.append(li);
     });
 }
+
+usersArr.forEach((user) => {
+    user.forEach((parametr) => {
+        option = document.createElement('option');
+        option.value = `${user.parametr}`
+        option.textContent = `${user.parametr}`
+    })
+})
