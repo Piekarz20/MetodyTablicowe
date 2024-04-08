@@ -61,7 +61,7 @@ function filteredList(arr = usersArr) {
 	const findText = findValueInput.value.trim().toLowerCase();
 
 	const filteredUsers = arr.filter((user) => {
-		return user[findVal].toString().toLowerCase().includes(findText);
+		return user[findVal].toString().toLowerCase() == findText;
 	});
 
 	updateFilteredList(filteredUsers);
